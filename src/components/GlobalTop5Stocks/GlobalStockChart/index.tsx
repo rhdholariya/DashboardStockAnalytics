@@ -15,7 +15,7 @@ interface chartData {
   mobile: number;
 }
 
-const ChartTwo: React.FC = () => {
+const GlobalStockChart: React.FC = () => {
   const chartConfig = {
     desktop: {
       label: "Current Price :",
@@ -34,7 +34,7 @@ const ChartTwo: React.FC = () => {
 
   const renderChartData = useMemo(() => {
     let lists: chartData[] = [];
-    stocks.top5Stocks.forEach((stock) => {
+    stocks.top5GlobalStocks.forEach((stock) => {
       lists.push({
         month: stock.Symbol,
         desktop: stock.current_price,
@@ -49,7 +49,7 @@ const ChartTwo: React.FC = () => {
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
           <h4 className="mb-3 text-xl font-semibold text-black dark:text-white">
-            Top 5 Stocks Chart Statistics
+            Top 5 Global Stocks Chart Statistics
           </h4>
         </div>
       </div>
@@ -75,4 +75,4 @@ const ChartTwo: React.FC = () => {
   );
 };
 
-export default ChartTwo;
+export default GlobalStockChart;

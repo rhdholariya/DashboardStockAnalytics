@@ -1,0 +1,96 @@
+{
+  "top5Stocks": [
+    {
+      "No": 1,
+      "Symbol": "AAPL",
+      "Name": "Apple Inc.",
+      "current_price": 250.23,
+      "daily_percentage": 15,
+      "Category": "Technology",
+      "Image": "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/apple.svg"
+    },
+    {
+      "No": 2,
+      "Symbol": "JPM",
+      "Name": "JPMorgan Chase & Co.",
+      "current_price": 200.12,
+      "daily_percentage": 10,
+      "Category": "Finance",
+      "Image": "https://logos-world.net/wp-content/uploads/2021/02/JP-Morgan-Chase-Logo.png"
+    },
+    {
+      "No": 3,
+      "Symbol": "JNJ",
+      "Name": "Johnson & Johnson",
+      "current_price": 150.56,
+      "daily_percentage": 8,
+      "Category": "Healthcare",
+      "Image": "https://companieslogo.com/img/orig/JNJ-5579062e.png?t=1720244492"
+    },
+    {
+      "No": 4,
+      "Symbol": "MSFT",
+      "Name": "Microsoft Corporation",
+      "current_price": 120.11,
+      "daily_percentage": 5,
+      "Category": "Technology",
+      "Image": "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/microsoft.svg"
+    },
+    {
+      "No": 5,
+      "Symbol": "BAC",
+      "Name": "Bank of America Corporation",
+      "current_price": 100.45,
+      "daily_percentage": 8,
+      "Category": "Finance",
+      "Image": "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/bankofamerica.svg"
+    }
+  ],
+  "top5GlobalStocks": [
+    {
+      "No": 1,
+      "Symbol": "TSM",
+      "Name": "Taiwan Semiconductor Manufacturing Company Limited",
+      "current_price": 120.50,
+      "daily_percentage": 10,
+      "Category": "Technology",
+      "Image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ71ygmLM9b481f02LLnUuVKMC5B72O5y-eaQ&s"
+    },
+    {
+      "No": 2,
+      "Symbol": "SAP",
+      "Name": "SAP SE",
+      "current_price": 150.20,
+      "daily_percentage": 8,
+      "Category": "Technology",
+      "Image": "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/sap.svg"
+    },
+    {
+      "No": 3,
+      "Symbol": "RDSB",
+      "Name": "Royal Dutch Shell plc",
+      "current_price": 80.50,
+      "daily_percentage": 5,
+      "Category": "Energy",
+      "Image": "https://cdn.jsdelivr.net/npm/simple-icons@v7/icons/shell.svg"
+    },
+    {
+      "No": 4,
+      "Symbol": "NOVOB",
+      "Name": "Novo Nordisk A/S",
+      "current_price": 100.80,
+      "daily_percentage": 8,
+      "Category": "Healthcare",
+      "Image": "https://companieslogo.com/img/orig/NVO-feee9c9c.png?t=1720244493"
+    },
+    {
+      "No": 5,
+      "Symbol": "HSBA",
+      "Name": "HSBC Holdings plc",
+      "current_price": 70.20,
+      "daily_percentage": 5,
+      "Category": "Finance",
+      "Image": "https://1000logos.net/wp-content/uploads/2017/02/HSBC-Logo.png"
+    }
+  ]
+}
