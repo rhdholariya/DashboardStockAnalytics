@@ -13,3 +13,17 @@ export interface Props {
   setStocksLists: any;
   filterStock: any;
 }
+export interface StockDataEntry {
+  Date: string;
+  Open: number;
+  High: number;
+  Low: number;
+  Close: number;
+  Volume: number;
+};
+
+export interface CompanyStock {
+  Name: string;
+  Symbol: string;
+  StockData: StockDataEntry[];
+};

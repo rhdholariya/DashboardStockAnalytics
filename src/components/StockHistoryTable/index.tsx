@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import {
     Table,
@@ -7,43 +8,50 @@ import {
     TableHeader,
     TableRow,
   } from "@/components/ui/table";
-  import { Stock } from "@/types/stocks";
+  import { CompanyStock, Stock, StockDataEntry } from "@/types/stocks";
+
   interface StockInfo {
-    stocks: Stock[];
+    stocks: {
+      StockData:StockDataEntry[]
+    };
   }
 
 const StockHistoryTable = ({ stocks }: StockInfo) => {
+  
+  console.log(stocks.StockData);
+  
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead className="w-[150px] p-4">No</TableHead>
-          <TableHead className="w-[150px] p-4">Symbol</TableHead>
-          <TableHead className="w-[300px] p-4">Name</TableHead>
-          <TableHead className="p-4">Current Price</TableHead>
-          <TableHead className="p-4 text-right">Daily percentage</TableHead>
+          <TableHead className="w-[150px] p-4">Date</TableHead>
+          <TableHead className="w-[300px] p-4">Open</TableHead>
+          <TableHead className="p-4">High</TableHead>
+          <TableHead className="p-4 text-right">Low</TableHead>
+          <TableHead className="p-4 text-right">Close</TableHead>
+          <TableHead className="p-4 text-right">Volume</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {stocks.map((invoice: Stock, index: number) => (
-          <TableRow key={invoice.No}>
+        {(stocks.StockData || []).map((stock: any, index: number) => (
+          <TableRow key={index}>
             <TableCell className="p-4 font-medium">{index + 1}</TableCell>
             <TableCell className="p-4 font-medium">
-              <img
-                src={invoice.Image}
-                className="h-5"
-                alt={String(invoice.No)}
-              />
+              {stock.Date}
             </TableCell>
-            <TableCell>{invoice.Name}</TableCell>
+            <TableCell>{stock.Open}</TableCell>
             <TableCell className="p-4 font-medium">
-              ${invoice.current_price}
+              {stock.High}
+            </TableCell>
+            <TableCell className="p-4 text-right font-bold text-rose-600">
+              {stock.Low}
             </TableCell>
             <TableCell className="p-4 text-right font-bold text-green-600">
-              <div className="flex justify-end gap-2">
-                {invoice.daily_percentage}%
-                <img src="/images/icon/growth.svg" alt="growth.svg" />
-              </div>
+              {stock.Close}
+            </TableCell>
+            <TableCell className="p-4 text-right">
+              {stock.Volume}
             </TableCell>
           </TableRow>
         ))}
