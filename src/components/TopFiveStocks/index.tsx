@@ -31,7 +31,7 @@ const TopFiveGlobalStocks = ({ stocks }: StockInfo) => {
       </TableHeader>
       <TableBody>
         {stocks.map((invoice: Stock, index: number) => (
-          <Link href="/info/1" className="contents" key={invoice.No}>
+          <Link href="/info" className="contents" key={invoice.No}>
             <TableRow className="cursor-pointer">
               <TableCell className="p-4 font-medium">{index + 1}</TableCell>
               <TableCell className="p-4 font-medium">
