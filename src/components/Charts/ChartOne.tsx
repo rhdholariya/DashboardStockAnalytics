@@ -1,31 +1,52 @@
 "use client";
 import React from "react";
 import TopFiveStock from "@/components/TopFiveStocks";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import stocks from "@/fakeData/top5Stocks.json";
 
 const ChartOne: React.FC = () => {
+  const [stocksLists, setStocksLists] = React.useState(
+    stocks.top5Stocks
+      .sort((a, b) => b.daily_percentage - a.daily_percentage)
+      .slice(0, 5),
+  );
+
+  const filterStock = (value: string) => {
+    const lists = stocks.top5GlobalStocks.filter(
+      (item) => item.category === value,
+    );
+    setStocksLists(lists.slice(0, 5));
+  };
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
       <div className="mb-3 flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <h4 className="text-xl font-semibold text-black dark:text-white">
-          Top 5 Stocks
+          Top 5 Stocks In USA
         </h4>
-        <div className="flex w-full max-w-45 justify-end">
-          <div className="inline-flex items-center rounded-md bg-whiter p-1.5 dark:bg-meta-4">
-            <button className="rounded bg-white px-3 py-1 text-xs font-medium text-black shadow-card hover:bg-white hover:shadow-card dark:bg-boxdark dark:text-white dark:hover:bg-boxdark">
-              Day
-            </button>
-            <button className="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-              Week
-            </button>
-            <button className="rounded px-3 py-1 text-xs font-medium text-black hover:bg-white hover:shadow-card dark:text-white dark:hover:bg-boxdark">
-              Month
-            </button>
-          </div>
+        <div className="">
+          <Select onValueChange={(value) => filterStock(value)}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select Sector" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="Technology">Technology</SelectItem>
+                <SelectItem value="Finance">Finance</SelectItem>
+                <SelectItem value="Healthcare">Healthcare</SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
         </div>
       </div>
-
       <div>
-        <TopFiveStock />
+        <TopFiveStock stocks={stocksLists} />
       </div>
     </div>
   );
