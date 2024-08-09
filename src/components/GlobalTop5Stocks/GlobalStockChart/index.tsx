@@ -1,6 +1,6 @@
 "use client";
 import React, { useMemo } from "react";
-import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 import {
   ChartConfig,
   ChartContainer,
@@ -11,19 +11,34 @@ import stocks from "@/fakeData/top5Stocks.json";
 
 interface chartData {
   month: string;
-  desktop: number;
-  mobile: number;
+  monthly: number;
+  daily: number;
 }
 
 const GlobalStockChart: React.FC = () => {
   const chartConfig = {
-    desktop: {
-      label: "Current Price :",
-      color: "#3C50E0",
+    daily_percentage: {
+      label: "daily_percentage",
     },
-    mobile: {
-      label: "Daily Price increase :",
-      color: "#80CAEE",
+    TSM: {
+      label: "TSM",
+      color: "hsl(var(--chart-1))",
+    },
+    SAP: {
+      label: "SAP",
+      color: "hsl(var(--chart-2))",
+    },
+    RDSB: {
+      label: "RDSB",
+      color: "hsl(var(--chart-3))",
+    },
+    NOVOB: {
+      label: "NOVOB",
+      color: "hsl(var(--chart-4))",
+    },
+    HSBA: {
+      label: "HSBA",
+      color: "hsl(var(--chart-5))",
     },
   } satisfies ChartConfig;
 
@@ -37,8 +52,8 @@ const GlobalStockChart: React.FC = () => {
     stocks.top5GlobalStocks.forEach((stock) => {
       lists.push({
         month: stock.Symbol,
-        desktop: stock.current_price,
-        mobile: percentage(stock.current_price, stock.daily_percentage),
+        monthly: stock.current_price,
+        daily: percentage(stock.current_price, stock.daily_percentage),
       });
     });
     return lists;
@@ -55,19 +70,31 @@ const GlobalStockChart: React.FC = () => {
       </div>
 
       <div id="chartTwo" className="">
-        <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-          <BarChart accessibilityLayer data={renderChartData}>
+        <ChartContainer
+          config={chartConfig}
+          className="h-[310px] min-h-[200px] w-full"
+        >
+          <BarChart
+            accessibilityLayer
+            data={renderChartData}
+            layout="vertical"
+            margin={{ left: 0 }}
+          >
             <CartesianGrid vertical={false} />
-            <XAxis
+            <YAxis
               dataKey="month"
+              type="category"
               tickLine={false}
-              tickMargin={10}
               axisLine={false}
               tickFormatter={(value) => value.slice(0, 3)}
             />
-            <ChartTooltip content={<ChartTooltipContent />} />
-            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
-            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            <XAxis dataKey="monthly" type="number" hide />
+            <ChartTooltip
+              cursor={false}
+              content={<ChartTooltipContent hideLabel />}
+            />
+            <Bar dataKey="monthly" fill="#3C50E0" radius={4} />
+            <Bar dataKey="daily" fill="#80CAEE" radius={4} />
           </BarChart>
         </ChartContainer>
       </div>
