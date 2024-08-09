@@ -7,9 +7,6 @@ import historyData from "@/fakeData/sevenDay.json";
 const Page = () => {
   return (
     <DefaultLayout>
-      <h4 className="mb-5 text-xl font-bold text-black dark:text-white">
-        Top 5 Stocks In USA
-      </h4>
       <div className="grid grid-cols-12 gap-4 md:gap-6 2xl:gap-7.5">
         <div className="col-span-12 xl:col-span-12">
           <StockChart />
