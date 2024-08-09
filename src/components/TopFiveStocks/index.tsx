@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Stock } from "@/types/stocks";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 interface StockInfo {
   stocks: Stock[];
@@ -30,30 +31,28 @@ const TopFiveGlobalStocks = ({ stocks }: StockInfo) => {
       </TableHeader>
       <TableBody>
         {stocks.map((invoice: Stock, index: number) => (
-          <TableRow
-            key={invoice.No}
-            onClick={() => router.push("/info/1")}
-            className="cursor-pointer"
-          >
-            <TableCell className="p-4 font-medium">{index + 1}</TableCell>
-            <TableCell className="p-4 font-medium">
-              <img
-                src={invoice.Image}
-                className="h-5"
-                alt={String(invoice.No)}
-              />
-            </TableCell>
-            <TableCell>{invoice.Name}</TableCell>
-            <TableCell className="p-4 font-medium">
-              ${invoice.current_price}
-            </TableCell>
-            <TableCell className="p-4 text-right font-bold text-green-600">
-              <div className="flex justify-end gap-2">
-                {invoice.daily_percentage}%
-                <img src="/images/icon/growth.svg" alt="growth.svg" />
-              </div>
-            </TableCell>
-          </TableRow>
+          <Link href="/info/1" className="contents">
+            <TableRow key={invoice.No} className="cursor-pointer">
+              <TableCell className="p-4 font-medium">{index + 1}</TableCell>
+              <TableCell className="p-4 font-medium">
+                <img
+                  src={invoice.Image}
+                  className="h-5"
+                  alt={String(invoice.No)}
+                />
+              </TableCell>
+              <TableCell>{invoice.Name}</TableCell>
+              <TableCell className="p-4 font-medium">
+                ${invoice.current_price}
+              </TableCell>
+              <TableCell className="p-4 text-right font-bold text-green-600">
+                <div className="flex justify-end gap-2">
+                  {invoice.daily_percentage}%
+                  <img src="/images/icon/growth.svg" alt="growth.svg" />
+                </div>
+              </TableCell>
+            </TableRow>
+          </Link>
         ))}
       </TableBody>
     </Table>
