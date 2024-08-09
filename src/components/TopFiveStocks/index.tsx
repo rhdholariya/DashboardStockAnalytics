@@ -1,3 +1,4 @@
+"use client";
 import {
   Table,
   TableBody,
@@ -7,12 +8,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Stock } from "@/types/stocks";
+import { useRouter } from "next/navigation";
 
 interface StockInfo {
   stocks: Stock[];
 }
 
 const TopFiveGlobalStocks = ({ stocks }: StockInfo) => {
+  const router = useRouter();
+
   return (
     <Table>
       <TableHeader>
@@ -26,7 +30,11 @@ const TopFiveGlobalStocks = ({ stocks }: StockInfo) => {
       </TableHeader>
       <TableBody>
         {stocks.map((invoice: Stock, index: number) => (
-          <TableRow key={invoice.No}>
+          <TableRow
+            key={invoice.No}
+            onClick={() => router.push("/info/1")}
+            className="cursor-pointer"
+          >
             <TableCell className="p-4 font-medium">{index + 1}</TableCell>
             <TableCell className="p-4 font-medium">
               <img
