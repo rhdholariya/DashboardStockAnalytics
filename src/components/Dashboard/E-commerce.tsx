@@ -9,12 +9,12 @@ const ECommerce: React.FC = () => {
   return (
     <>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-        <CardDataStats title="Total views" total="$3.456K" rate="0.43%" levelUp>
+        <CardDataStats title="Google" total="$3.456K" rate="0.43%" levelUp>
           <span className="h-12 w-12 rounded-full">
             <Image
               width={112}
               height={112}
-              src={"/images/user/user-02.png"}
+              src={"/images/brand/brand-01.svg"}
               style={{
                 width: "auto",
                 height: "auto",
@@ -23,11 +23,11 @@ const ECommerce: React.FC = () => {
             />
           </span>
         </CardDataStats>
-        <CardDataStats title="Total Profit" total="$45,2K" rate="4.35%" levelUp>
+        <CardDataStats title="Twitter" total="$45,2K" rate="4.35%" levelUp>
           <Image
             width={112}
             height={112}
-            src={"/images/user/user-02.png"}
+            src={"/images/brand/brand-02.svg"}
             style={{
               width: "auto",
               height: "auto",
@@ -35,11 +35,11 @@ const ECommerce: React.FC = () => {
             alt="User"
           />
         </CardDataStats>
-        <CardDataStats title="Total Product" total="2.450" rate="2.59%" levelUp>
+        <CardDataStats title="Github" total="2.450" rate="2.59%" levelUp>
           <Image
             width={112}
             height={112}
-            src={"/images/user/user-02.png"}
+            src={"/images/brand/brand-03.svg"}
             style={{
               width: "auto",
               height: "auto",
@@ -47,11 +47,11 @@ const ECommerce: React.FC = () => {
             alt="User"
           />
         </CardDataStats>
-        <CardDataStats title="Total Users" total="3.456" rate="0.95%" levelDown>
+        <CardDataStats title="Vimeo" total="3.456" rate="0.95%" levelDown>
           <Image
             width={112}
             height={112}
-            src={"/images/user/user-02.png"}
+            src={"/images/brand/brand-04.svg"}
             style={{
               width: "auto",
               height: "auto",
