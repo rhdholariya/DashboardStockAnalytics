@@ -5,7 +5,6 @@ import stocks from "@/fakeData/top5Stocks.json";
 import { StockChart } from "@/components/GlobalTop5Stocks/GlobalStockChart/StockChart";
 
 const Page = ({ params }: { params: { slug: string } }) => {
-  console.log(params);
   return (
     <DefaultLayout>
       <h4 className="mb-5 text-xl font-bold text-black dark:text-white">
