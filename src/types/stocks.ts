@@ -7,3 +7,9 @@ export interface Stock {
   daily_percentage: number;
   Image: string;
 }
+
+export interface Props {
+  stocksLists: any;
+  setStocksLists: any;
+  filterStock: any;
+}

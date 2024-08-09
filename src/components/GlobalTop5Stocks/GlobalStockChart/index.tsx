@@ -7,7 +7,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import stocks from "@/fakeData/top5Stocks.json";
+import { Props, Stock } from "@/types/stocks";
 
 interface chartData {
   month: string;
@@ -15,7 +15,7 @@ interface chartData {
   daily: number;
 }
 
-const GlobalStockChart: React.FC = () => {
+const GlobalStockChart = (props: Props) => {
   const chartConfig = {
     daily_percentage: {
       label: "daily_percentage",
@@ -49,7 +49,7 @@ const GlobalStockChart: React.FC = () => {
 
   const renderChartData = useMemo(() => {
     let lists: chartData[] = [];
-    stocks.top5GlobalStocks.forEach((stock) => {
+    props.stocksLists.forEach((stock: Stock) => {
       lists.push({
         month: stock.Symbol,
         monthly: stock.current_price,
@@ -57,7 +57,7 @@ const GlobalStockChart: React.FC = () => {
       });
     });
     return lists;
-  }, [stocks]);
+  }, [props.stocksLists]);
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">

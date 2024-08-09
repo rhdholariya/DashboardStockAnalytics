@@ -7,7 +7,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-import stocks from "@/fakeData/top5Stocks.json";
+import { Props, Stock } from "@/types/stocks";
 
 interface chartData {
   month: string;
@@ -15,7 +15,7 @@ interface chartData {
   mobile: number;
 }
 
-const ChartTwo: React.FC = () => {
+const ChartTwo = (props: Props) => {
   const chartConfig = {
     desktop: {
       label: "Current Price :",
@@ -34,7 +34,7 @@ const ChartTwo: React.FC = () => {
 
   const renderChartData = useMemo(() => {
     let lists: chartData[] = [];
-    stocks.top5Stocks.forEach((stock) => {
+    props.stocksLists.forEach((stock: Stock) => {
       lists.push({
         month: stock.Symbol,
         desktop: stock.current_price,
@@ -42,7 +42,7 @@ const ChartTwo: React.FC = () => {
       });
     });
     return lists;
-  }, [stocks]);
+  }, [props.stocksLists]);
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">

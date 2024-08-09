@@ -9,21 +9,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import stocks from "@/fakeData/top5Stocks.json";
+import { Props } from "@/types/stocks";
 
-const ChartOne: React.FC = () => {
-  const [stocksLists, setStocksLists] = React.useState(
-    stocks.top5Stocks
-      .sort((a, b) => b.daily_percentage - a.daily_percentage)
-      .slice(0, 5),
-  );
-
-  const filterStock = (value: string) => {
-    const lists = stocks.top5GlobalStocks.filter(
-      (item) => item.category === value,
-    );
-    setStocksLists(lists.slice(0, 5));
-  };
+const ChartOne = (props: Props) => {
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pb-5 pt-7.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-8">
       <div className="mb-3 flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
@@ -31,7 +19,7 @@ const ChartOne: React.FC = () => {
           Top 5 Stocks In USA
         </h4>
         <div className="">
-          <Select onValueChange={(value) => filterStock(value)}>
+          <Select onValueChange={(value) => props.filterStock(value)}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Select Sector" />
             </SelectTrigger>
@@ -46,7 +34,7 @@ const ChartOne: React.FC = () => {
         </div>
       </div>
       <div>
-        <TopFiveStock stocks={stocksLists} />
+        <TopFiveStock stocks={props.stocksLists} />
       </div>
     </div>
   );
